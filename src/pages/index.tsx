@@ -2,11 +2,15 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 
+
 import { api } from "~/utils/api";
 
-export default function Home() {
+export default  function Home() {
   const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const data = api.branch.getAll.useQuery();
 
+  console.log(data.data)
+  
   return (
     <>
       <Head>
