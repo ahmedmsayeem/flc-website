@@ -1,30 +1,23 @@
 import React from "react";
-import {
-  CldUploadWidget,
-  type CloudinaryUploadWidgetInfo,
-} from "next-cloudinary";
-import { useState } from "react";
-
+import CloudinaryUpload from "~/components/CloudinaryUpload";
+import CloudinaryDelete from "~/components/CloudinaryDelete";
+import { api } from "~/utils/api";
+import { uploadTypeEnum } from "~/components/CloudinaryUpload";
 export default function Index() {
-  const [url, setUrl] = useState<string | null>(null);
-
+ 
   return (
     <div>
-      <CldUploadWidget
-        signatureEndpoint="/api/cloudinary/sign"
-        onSuccess={(result, widget) => {
-          const { info } = result;
-          const { secure_url } = info as CloudinaryUploadWidgetInfo;
-          setUrl(secure_url);
-          console.log(widget);
-        }}
-      >
-        {({ open }) => {
-          return <button onClick={() => open()}>Upload an Image</button>;
-        }}
-      </CldUploadWidget>
+      {/*@FrontEnd use the component in any form - image will be uploaded to DB as userLink  */}
 
-      {url && <div>{url}</div>}
+      <CloudinaryUpload linkName="Deletion test" type={uploadTypeEnum.userLink} />
+
+      {/* #props 
+             linkName : for the userLink schema
+             userId : is optional, suggested to pass from parent component
+      */}
+
+      {/* you will see list of images, option to delete- both from cloudinary and db */}
+      <CloudinaryDelete></CloudinaryDelete>
     </div>
   );
 }

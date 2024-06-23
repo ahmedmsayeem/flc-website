@@ -46,7 +46,6 @@ function Page() {
       setPlatformBillerId(data.upi.platformBillID);
     } catch (error) {
       console.error("Error fetching payment link:", error);
-      // Handle error gracefully (e.g., show error message to user)
     }
   };
 
@@ -68,7 +67,6 @@ function Page() {
       console.log("Mock payment successful:");
     } catch (error) {
       console.error("Error mocking payment:", error);
-      // Handle error gracefully (e.g., show error message to user)
     }
   };
 
@@ -94,7 +92,6 @@ function Page() {
       console.log("Payment status checked:", JSON.stringify(result));
     } catch (error) {
       console.error("Error checking payment status:", error);
-      // Handle error gracefully (e.g., show error message to user)
     }
   };
 

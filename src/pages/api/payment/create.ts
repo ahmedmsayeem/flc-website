@@ -4,15 +4,12 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 
  type RequestBody = {
-
   amount:number
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-
-
 ) {
       if (req.method !== "POST") {
         res.setHeader("Allow", ["POST"]);
